@@ -1,14 +1,16 @@
 {
-  "name": "babel_webpack_starter",
+  "name": "star-wars-heros",
   "version": "1.0.0",
-  "description": "Starter pack for compiling ES6+ apps to ES5",
+  "description": "Star Wars Heros App",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --output-public-path=/build/  --mode development --progress --open --hot",
-    "build": "webpack --mode production --progress"
+    "build": "webpack --mode production --progress",
+    "sass": "node-sass -w scss -o assets/css --recursive",
+    "deploy": "gh-pages -d build"
   },
-  "author": "Brad Traversy",
+  "author": "Brian Sekwakwa",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -19,5 +21,9 @@
     "webpack": "^4.16.1",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.10"
+  },
+  "dependencies": {
+    "gh-pages": "^2.0.1",
+    "node-sass": "^4.11.0"
   }
 }

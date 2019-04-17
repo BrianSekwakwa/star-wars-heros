@@ -1,0 +1,31 @@
+.hero {
+  &__card {
+    margin-top: 3rem;
+    padding: 0 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &__item {
+      margin: 1rem;
+      width: 20rem;
+      min-height: 25rem;
+      box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+
+      &__image {
+        height: 90%;
+      }
+
+      & h3 {
+        text-align: center;
+      }
+
+      &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+}
