@@ -1,0 +1,74 @@
+.modal {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  display: none;
+
+  // Modal Card
+  &__item {
+    width: 50rem;
+    min-height: 70%;
+    background: #fff;
+    display: grid;
+
+    @include small {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    // Modal image
+    &__image {
+      background: red;
+
+      @include small {
+        & .close {
+          display: none;
+        }
+      }
+    }
+
+    // Modal content
+    &__content {
+      @include verySmall {
+        & .close {
+          display: none;
+        }
+      }
+
+      &__results {
+        & h2 {
+          text-align: center;
+          padding-top: 0.5rem;
+        }
+
+        & ul {
+          margin-top: 2rem;
+          margin-left: 1rem;
+
+          & li {
+            margin: 1rem;
+
+            & span {
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// close modal button
+.close {
+  background: orange;
+  float: right;
+  padding: 0.7rem;
+  cursor: pointer;
+  clear: both;
+}
