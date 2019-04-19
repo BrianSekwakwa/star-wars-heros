@@ -71,7 +71,8 @@
       margin-top: 2rem;
       margin-left: 1rem; }
       .modal__item__content__results ul li {
-        margin: 1rem; }
+        margin: 1rem;
+        list-style: none; }
         .modal__item__content__results ul li span {
           font-weight: 600; }
 
