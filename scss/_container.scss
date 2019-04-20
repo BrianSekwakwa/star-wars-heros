@@ -1,0 +1,18 @@
+.container {
+  max-width: 1366px;
+  margin: 0 auto;
+  background: url("../img/space--small.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
+
+  @include medium {
+    background: url("../img/space--large.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+}

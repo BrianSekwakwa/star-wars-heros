@@ -3,5 +3,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 5px solid darkcyan;
+
+  & h1 {
+    color: $tertiary-color;
+    text-shadow: 0.1vw 0vw 0.25vw $tertiary-color,
+      0.2vw 0vw 0.25vw $tertiary-color, 0.4vw 0vw 0.25vw $tertiary-color,
+      0.1vw 0vw 0vw $secondary-color, 0.2vw 0vw 0vw $secondary-color,
+      0.4vw 0vw 0vw $secondary-color, 0.1vw 0vw 0.1vw $secondary-color,
+      0.2vw 0vw 0.1vw $secondary-color, 0.4vw 0vw 0.1vw $secondary-color,
+      0.1vw 0vw 2vw $secondary-color, 0.2vw 0vw 2vw $secondary-color,
+      0.4vw 0vw 2vw $secondary-color, 0.1vw 0vw 1vw $primary-color,
+      0.2vw 0vw 1vw $primary-color, 0.4vw 0vw 5vw $primary-color,
+      0.1vw 0vw 5vw $primary-color, 0.2vw 0vw 20vw $primary-color,
+      0.4vw 0vw 10vw $primary-color, 0.1vw 0vw 10vw $primary-color,
+      0.2vw 0vw 30vw $primary-color, 0.4vw 0vw 10vw $primary-color;
+
+    @include small {
+      letter-spacing: 8px;
+      font-size: 3rem;
+    }
+  }
 }

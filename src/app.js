@@ -1,6 +1,8 @@
 const heroCard = document.querySelectorAll(".hero__card__item");
 const modal = document.querySelector(".modal");
+const modalItem = document.querySelector(".modal__item");
 const heroUI = document.querySelector(".modal__item__content__results");
+const spinner = document.querySelector(".modal__spinner");
 const close = document.querySelectorAll(".close");
 
 // const hero = "obi";
@@ -40,20 +42,32 @@ close.forEach(item => {
 
 // Event functions
 function fetchData(e) {
-  const id = e.target.parentElement.id;
-  fetch(`https://swapi.co/api/people/?search=${id}`)
-    .then(res => {
-      return res.json();
-    })
-    .then(data => {
-      dataUI(data);
-    });
+  spinner.style.display = "block";
+
+  setTimeout(() => {
+    const id = e.target.parentElement.id;
+    fetch(`https://swapi.co/api/people/?search=${id}`)
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        dataUI(data);
+      })
+      .catch(err => {
+        spinner.style.display = "none";
+        modal.style.display = "none";
+        modalItem.style.display = "none";
+        alert(`Could not fetch data from API \n${err}`);
+      });
+  }, 1000);
 
   // show the modal
-  modal.style.display = "flex";
+  openModal();
 }
 
 function dataUI(data) {
+  spinner.style.display = "none";
+  modalItem.style.display = "grid";
   heroUI.innerHTML = `
     <h2>${data.results[0].name}</h2>
     <ul>
@@ -65,14 +79,17 @@ function dataUI(data) {
       <li><span>Eye Color:</span> ${data.results[0].eye_color}</li>
       <li><span>Skin Color:</span> ${data.results[0].skin_color}</li>
     </ul>
-  
   `;
 }
 
-function openModal() {}
+function openModal() {
+  modal.style.display = "flex";
+}
 
 function closeModal(e) {
   modal.style.display = "none";
+  modalItem.style.display = "none";
+  spinner.style.display = "none";
   heroUI.innerHTML = "";
 }
 
