@@ -9,6 +9,7 @@
 
 // Media Queries
 
+// Widths
 @mixin verySmall {
   @media screen and (max-width: 599.5px) {
     @content;
@@ -35,6 +36,13 @@
 
 @mixin veryLarge {
   @media screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+// Heights
+@mixin maxHeight {
+  @media screen and (max-height: 576px) {
     @content;
   }
 }

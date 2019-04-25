@@ -1,31 +1,30 @@
-const heroCard = document.querySelectorAll(".hero__card__item");
+const hero = document.querySelectorAll(".hero__card__item__image img");
 const modal = document.querySelector(".modal");
 const modalItem = document.querySelector(".modal__item");
-const heroUI = document.querySelector(".modal__item__content__results");
+const heroImage = document.querySelector(".modal__item__images__img");
+const heroData = document.querySelector(".modal__item__content__results");
 const spinner = document.querySelector(".modal__spinner");
-const close = document.querySelectorAll(".close");
+const close = document.querySelector(".close");
 
 // Events
-heroCard.forEach(item => {
+hero.forEach(item => {
   item.addEventListener("click", fetchData);
 });
 
-close.forEach(item => {
-  item.addEventListener("click", closeModal);
-});
+close.addEventListener("click", closeModal);
 
 // Event functions
 function fetchData(e) {
   spinner.style.display = "block";
 
   setTimeout(() => {
-    const id = e.target.parentElement.id;
+    const id = e.target.parentElement.parentElement.id;
     fetch(`https://swapi.co/api/people/?search=${id}`)
       .then(res => {
         return res.json();
       })
       .then(data => {
-        dataUI(data);
+        dataUI(data, id);
       })
       .catch(err => {
         spinner.style.display = "none";
@@ -39,10 +38,17 @@ function fetchData(e) {
   openModal();
 }
 
-function dataUI(data) {
+function dataUI(data, id) {
   spinner.style.display = "none";
+  close.style.display = "block";
   modalItem.style.display = "grid";
-  heroUI.innerHTML = `
+  heroImage.innerHTML = `
+    <picture>
+      <source media="(max-width: 599.5px )" srcset="./assets/img/heros/${id}--small.jpg" />
+      <img src="./assets/img/heros/${id}.jpg" alt="hero image" />
+    </picture>
+  `;
+  heroData.innerHTML = `
     <h2>${data.results[0].name}</h2>
     <ul>
       <li><span>Birth Year:</span> ${data.results[0].birth_year}</li>
@@ -64,5 +70,5 @@ function closeModal(e) {
   modal.style.display = "none";
   modalItem.style.display = "none";
   spinner.style.display = "none";
-  heroUI.innerHTML = "";
+  heroData.innerHTML = "";
 }

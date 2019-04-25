@@ -76,7 +76,8 @@ main {
   justify-content: center;
   align-items: center;
   padding: 0 1rem;
-  display: none; }
+  display: none;
+  overflow: scroll; }
   .modal__spinner {
     display: none; }
   .modal__item {
@@ -85,17 +86,20 @@ main {
     background: #fff;
     box-shadow: 0px 0px 5px 2px #ffd8d8;
     display: none; }
+    @media screen and (max-height: 576px) {
+      .modal__item {
+        min-height: 50%; } }
     @media screen and (min-width: 600px) {
       .modal__item {
         grid-template-columns: repeat(2, 1fr); } }
-    .modal__item__image {
+    .modal__item__images {
       background: red; }
-      @media screen and (min-width: 600px) {
-        .modal__item__image .close {
-          display: none; } }
-    @media screen and (max-width: 599.5px) {
-      .modal__item__content .close {
-        display: none; } }
+      .modal__item__images__img {
+        width: 100%;
+        height: 100%; }
+        .modal__item__images__img img {
+          width: 100%;
+          height: 100%; }
     .modal__item__content__results h2 {
       text-align: center;
       padding-top: 0.5rem; }
@@ -113,15 +117,18 @@ main {
           font-weight: bold; }
 
 .close {
-  background: rgba(0, 0, 0, 0.5);
-  float: right;
+  background: rgba(255, 255, 255, 0.5);
+  position: fixed;
+  right: 0;
+  top: 0;
   padding: 0.7rem;
   cursor: pointer;
   clear: both;
-  transition: all 0.35s ease-in-out; }
+  transition: all 0.35s ease-in-out;
+  display: none; }
   .close:hover {
     color: #ffd8d8;
-    background: rgba(0, 0, 0, 0.8); }
+    background: rgba(255, 255, 255, 0.8); }
 
 .footer {
   height: 5rem;
