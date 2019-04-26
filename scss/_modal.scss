@@ -9,7 +9,6 @@
   align-items: center;
   padding: 0 1rem;
   display: none;
-  overflow: scroll;
 
   // modal spinner
   &__spinner {
@@ -19,28 +18,43 @@
   // Modal Card
   &__item {
     width: 50rem;
-    min-height: 70%;
+    min-height: 70vh;
     background: #fff;
     box-shadow: 0px 0px 5px 2px $tertiary-color;
     display: none;
 
-    @include maxHeight {
-      min-height: 50%;
+    @include verySmall {
+      width: 20rem;
     }
 
     @include small {
       grid-template-columns: repeat(2, 1fr);
     }
 
+    @include minHeight {
+      min-height: 0;
+      max-height: 540px;
+    }
+
+    @include maxHeight {
+      width: 20rem;
+    }
+
     // Modal image
     &__images {
-      background: red;
+      width: 100%;
+      height: 100%;
+
+      @include maxHeight {
+        display: none;
+      }
 
       &__img {
         width: 100%;
         height: 100%;
 
-        & img {
+        & img,
+        & source {
           width: 100%;
           height: 100%;
         }
@@ -53,11 +67,19 @@
         & h2 {
           text-align: center;
           padding-top: 0.5rem;
+          @include maxHeight {
+            text-align: left;
+            margin-left: 1.4rem;
+          }
         }
 
         & ul {
           margin-top: 2rem;
           margin-left: 1rem;
+
+          @include maxHeight {
+            margin-top: 1rem;
+          }
 
           & li {
             margin: 0.5rem;
@@ -66,6 +88,10 @@
 
             @include small {
               margin: 1rem;
+            }
+
+            @include maxHeight {
+              margin: 0.4rem;
             }
 
             & span {
@@ -80,18 +106,16 @@
 
 // close modal button
 .close {
-  background: rgba($color: #fff, $alpha: 0.5);
   position: fixed;
-  right: 0;
-  top: 0;
-  padding: 0.7rem;
+  right: 2%;
+  top: 2%;
   cursor: pointer;
   clear: both;
   transition: all 0.35s ease-in-out;
   display: none;
+  color: $secondary-color;
 
   &:hover {
     color: $tertiary-color;
-    background: rgba($color: #fff, $alpha: 0.8);
   }
 }

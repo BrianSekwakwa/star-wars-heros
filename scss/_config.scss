@@ -42,7 +42,13 @@
 
 // Heights
 @mixin maxHeight {
-  @media screen and (max-height: 576px) {
+  @media screen and (max-height: 530px) {
+    @content;
+  }
+}
+
+@mixin minHeight {
+  @media screen and (min-height: 768px) {
     @content;
   }
 }
