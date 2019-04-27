@@ -42,12 +42,16 @@ function dataUI(data, id) {
   spinner.style.display = "none";
   close.style.display = "block";
   modalItem.style.display = "grid";
+
+  // load image into modal
   heroImage.innerHTML = `
     <picture>
       <source media="(max-width: 599.5px )" srcset="./assets/img/heros/${id}--small.jpg" />
       <img src="./assets/img/heros/${id}.jpg" alt="hero image" />
     </picture>
   `;
+
+  // load data from star wars api into modal
   heroData.innerHTML = `
     <h2>${data.results[0].name}</h2>
     <ul>
@@ -66,7 +70,7 @@ function openModal() {
   modal.style.display = "flex";
 }
 
-function closeModal(e) {
+function closeModal() {
   modal.style.display = "none";
   modalItem.style.display = "none";
   spinner.style.display = "none";
